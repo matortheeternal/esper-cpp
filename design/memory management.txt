@@ -1,0 +1,5 @@
+esper memory management notes:
+- record headers, group headers, and subrecords will all be resolved from the memory mapped file's data stream
+- element data will be copied to working memory
+- elements will be prepared unless prepareElements is set to false in session options
+- modifications will be tracked in elements only
