@@ -9,11 +9,20 @@ namespace esper {
 
 	class StringData : public DataContainer {
 	public:
-		StringData(uint8_t* dataPtr, size_t size) {
-			data = (char*) dataPtr;
+		StringData(uint8_t* dataPtr, size_t size) 
+		: DataContainer(dataPtr), size(size) {}
+
+		string getData() {
+			char* str = new char[size];
+			memcpy(str, dataPtr, size);
+			return string(str);
 		}
 
-		char* data;
+		string getValue() {
+			return getData();
+		}
+
+		size_t size;
 	};
 }
 

@@ -7,11 +7,13 @@
 namespace esper {
 	class FloatData : public DataContainer {
 	public:
-		FloatData(uint8_t* dataPtr) {
-			data = *reinterpret_cast<float*>(dataPtr);
+		float getData() {
+			return *reinterpret_cast<float*>(dataPtr);
 		}
 
-		float data;
+		std::string getValue() {
+			return to_str(getData());
+		}
 	};
 }
 

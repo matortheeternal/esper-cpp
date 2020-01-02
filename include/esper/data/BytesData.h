@@ -9,22 +9,25 @@ namespace esper {
 	class BytesData : public DataContainer {
 	public:
 		BytesData(uint8_t* dataPtr, size_t size)
-		: bytes(dataPtr), size(size) {}
+		: DataContainer(dataPtr), size(size) {}
 
 		BytesData(const string& value) {
-			parseBytes(value, bytes, size);
+			parseBytes(value, dataPtr, size);
 		}
 
 		uint8_t operator[](const unsigned int index) {
 			if (index >= size) throw error("Index out of bounds.");
-			return bytes[index];
+			return dataPtr[index];
 		}
 
-		string toString() {
-			return formatBytes(bytes, size);
+		uint8_t* getData() {
+			return dataPtr;
 		}
 
-		uint8_t* bytes;
+		string getValue() {
+			return formatBytes(dataPtr, size);
+		}
+
 		size_t size;
 	};
 }

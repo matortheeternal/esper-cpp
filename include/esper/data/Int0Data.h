@@ -6,7 +6,11 @@
 namespace esper {
 	class Int0Data : public DataContainer {
 	public:
-		Int0Data() {}
+		void getData() {}
+
+		std::string getValue() {
+			return "";
+		}
 	};
 }
 

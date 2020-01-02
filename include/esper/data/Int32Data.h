@@ -7,11 +7,13 @@
 namespace esper {
 	class Int32Data : public DataContainer {
 	public:
-		Int32Data(uint8_t* dataPtr) {
-			data = *reinterpret_cast<int32_t*>(dataPtr);
+		int32_t getData() {
+			return *reinterpret_cast<int32_t*>(dataPtr);
 		}
 
-		int32_t data;
+		std::string getValue() {
+			return to_str(getData());
+		}
 	};
 }
 

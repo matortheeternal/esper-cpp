@@ -7,11 +7,13 @@
 namespace esper {
 	class UInt8Data : public DataContainer {
 	public:
-		UInt8Data(uint8_t* dataPtr) {
-			data = *dataPtr;
+		uint8_t getData() {
+			return *dataPtr;
 		}
 
-		uint8_t data;
+		std::string getValue() {
+			return to_str(getData());
+		}
 	};
 }
 

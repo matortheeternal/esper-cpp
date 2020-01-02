@@ -21,7 +21,15 @@ namespace esper {
 			return new BytesData(element->getDataPtr(), element->getSize());
 		}
 
-		string BytesDef::defType = "bytes";
-		registerDef<BytesDef>();
+		string getValue(ValueElement* element) {
+			return getData(element)->getValue();
+		}
+
+		void setValue(ValueElement* element, string value) {
+			// TODO
+		}
 	};
+
+	string BytesDef::defType = "bytes";
+	registerDef<BytesDef>();
 }
