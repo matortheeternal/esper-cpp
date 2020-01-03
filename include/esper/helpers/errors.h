@@ -1,18 +1,13 @@
-#ifndef ESPER_ERRORS_H
-#define ESPER_ERRORS_H
+#ifndef ESPER_ERRORS_H_
+#define ESPER_ERRORS_H_
 
 #include "windows.h"
 #include <stdexcept>
-#include "json.h"
+#include <string>
 
 namespace esper {
-	using error = std::runtime_error;
-
-	class DefSourceError : public error {
-	public:
-		DefSourceError(string msg, JsonValue* src)
-			: error(msg + stringify(src)) {}
-	};
+	using namespace std;
+	using error = runtime_error;
 
 	string GetLastErrorAsString() {
 		DWORD errorMessageID = ::GetLastError();

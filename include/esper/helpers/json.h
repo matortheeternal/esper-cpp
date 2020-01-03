@@ -7,6 +7,7 @@
 #include "writer.h"
 #include "filereadstream.h"
 #include "document.h"
+#include "errors.h"
 
 namespace esper {
 	using JsonValue = rapidjson::Value;
@@ -27,7 +28,7 @@ namespace esper {
 		return &doc;
 	};
 
-	JsonValue* objectAssign(JsonValue* target, const list<JsonValue*>& sources, JsonDocument::AllocatorType& allocator) {
+	JsonValue* objectAssign(JsonValue* target, const vector<JsonValue*>& sources, JsonDocument::AllocatorType& allocator) {
 		for (size_t i = 0; i < sources.size(); i++) {
 			JsonValue* source = sources[i];
 			for (auto it = source->MemberBegin(); it != source->MemberEnd(); it++) {
@@ -55,6 +56,12 @@ namespace esper {
 	bool propertyIsPositiveIntOrZero(JsonValue* value, string key) {
 		return (*value)[key].IsInt() && (*value)[key].GetInt() >= 0;
 	}
+
+	class DefSourceError : public error {
+	public:
+		DefSourceError(string msg, JsonValue* src)
+			: error(msg + stringify(src)) {}
+	};
 }
 
 #endif
