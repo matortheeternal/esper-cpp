@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,16 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{AE8D6B1D-BF59-4C6C-812E-AC6063243F2B}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>    
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -38,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>    
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -47,13 +45,10 @@
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -66,15 +61,72 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-
-  <ItemDefinitionGroup></ItemDefinitionGroup>
-  <ItemGroup></ItemGroup>
-
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\dev\git\esper\include\rapidjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\dev\git\esper\include\rapidjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\esper\data\BytesData.h" />
+    <ClInclude Include="include\esper\data\DataContainer.h" />
+    <ClInclude Include="include\esper\data\FloatData.h" />
+    <ClInclude Include="include\esper\data\Int0Data.h" />
+    <ClInclude Include="include\esper\data\Int16Data.h" />
+    <ClInclude Include="include\esper\data\Int32Data.h" />
+    <ClInclude Include="include\esper\data\Int8Data.h" />
+    <ClInclude Include="include\esper\data\StringData.h" />
+    <ClInclude Include="include\esper\data\UInt16Data.h" />
+    <ClInclude Include="include\esper\data\UInt32Data.h" />
+    <ClInclude Include="include\esper\data\UInt8Data.h" />
+    <ClInclude Include="include\esper\defs\BytesDef.h" />
+    <ClInclude Include="include\esper\defs\Def.h" />
+    <ClInclude Include="include\esper\defs\FloatDef.h" />
+    <ClInclude Include="include\esper\defs\MainRecordDef.h" />
+    <ClInclude Include="include\esper\defs\MaybeSubrecordDef.h" />
+    <ClInclude Include="include\esper\defs\MembersDef.h" />
+    <ClInclude Include="include\esper\defs\StructDef.h" />
+    <ClInclude Include="include\esper\defs\ValueDef.h" />
+    <ClInclude Include="include\esper\elements\Container.h" />
+    <ClInclude Include="include\esper\elements\Element.h" />
+    <ClInclude Include="include\esper\elements\MainRecord.h" />
+    <ClInclude Include="include\esper\elements\MainRecordHeader.h" />
+    <ClInclude Include="include\esper\elements\PluginFile.h" />
+    <ClInclude Include="include\esper\elements\ValueElement.h" />
+    <ClInclude Include="include\esper\esper.h" />
+    <ClInclude Include="include\esper\flags\ElementState.h" />
+    <ClInclude Include="include\esper\flags\Flags.h" />
+    <ClInclude Include="include\esper\helpers\errors.h" />
+    <ClInclude Include="include\esper\helpers\helpers.h" />
+    <ClInclude Include="include\esper\helpers\json.h" />
+    <ClInclude Include="include\esper\helpers\strings.h" />
+    <ClInclude Include="include\esper\helpers\stubs.h" />
+    <ClInclude Include="include\esper\parsing\GroupHeader.h" />
+    <ClInclude Include="include\esper\parsing\MemoryMap.h" />
+    <ClInclude Include="include\esper\parsing\PluginFileSource.h" />
+    <ClInclude Include="include\esper\parsing\RecordHeader.h" />
+    <ClInclude Include="include\esper\parsing\Signature.h" />
+    <ClInclude Include="include\esper\parsing\Subrecord.h" />
+    <ClInclude Include="include\esper\setup\DefinitionManager.h" />
+    <ClInclude Include="include\esper\setup\Game.h" />
+    <ClInclude Include="include\esper\setup\games.h" />
+    <ClInclude Include="include\esper\setup\LoadOrderSlot.h" />
+    <ClInclude Include="include\esper\setup\PluginManager.h" />
+    <ClInclude Include="include\esper\setup\Session.h" />
+    <ClInclude Include="include\esper\setup\SessionOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="include\esper\empty_file.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
