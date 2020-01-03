@@ -9,12 +9,22 @@ namespace esper {
 
 	class Game {
 	public:
+		enum GameId {
+			TES4 = 1,
+			FO3 = 2,
+			FNV = 3,
+			TES5 = 4,
+		    F76 = 5,
+			FO4 = 6,
+			SSE = 7
+		};
+
 		bool supportsLightPlugins() {
 			for (auto i = 0; i < pluginExtensions.size(); i++)
 				if (pluginExtensions[i] == ".esl") return true;
 		}
 
-		uint8_t id;
+		GameId id;
 		string name;
 		string fullName;
 		string abbreviation;
