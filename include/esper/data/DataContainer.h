@@ -17,6 +17,10 @@ namespace esper {
 		DataContainer(uint8_t* dataPtr)
 			: dataPtr(dataPtr) {}
 
+		void free() {
+			std::free(dataPtr);
+		}
+
 		virtual string getValue() = 0;
 
 		uint8_t* dataPtr;
