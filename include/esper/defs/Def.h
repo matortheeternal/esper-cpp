@@ -1,28 +1,30 @@
 #ifndef ESPER_DEF_H_
 #define ESPER_DEF_H_
 
-#include "../helpers/helpers.h"
+#include "../setup/DefinitionManager.h"
+#include "../parsing/Signature.h"
+#include "../parsing/Subrecord.h"
 
 namespace esper {
 	class Def {
 	public:
 		static string defType;
 
-		Def(DefinitionManager* manager, JsonValue* src, Def* parent) {
+		Def(DefinitionManager* manager, JsonValue* src, void* parent) {
 			this->manager = manager;
 			this->src = src;
-			this->parent = parent;
+			this->parent = (Def*)parent;
 		}
 
-		virtual bool hasSignature(Signature* signature) {
+		virtual bool hasSignature(const Signature& signature) {
 			return false;
 		}
 
-		virtual bool hasPrimarySignature(Signature* signature) {
+		virtual bool hasPrimarySignature(const Signature& signature) {
 			return false;
 		}
 
-		virtual void load(Element* container) {
+		virtual void* build(Container* container, Subrecord* subrecord) {
 			throw error("unimplemented");
 		}
 
