@@ -22,146 +22,287 @@
     <Filter Include="flags">
       <UniqueIdentifier>{eecc8b2f-1b47-4522-9b85-834b082d1d31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="defs\values">
+      <UniqueIdentifier>{2ee12913-01e1-4217-8708-3b3ad00e7bfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="elements\interfaces">
+      <UniqueIdentifier>{d86d54e7-04c7-47a6-8525-ca3a3fc8bf19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resolution">
+      <UniqueIdentifier>{feadfd2b-7738-4d6e-95b5-1b59ecdd0b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resolution\strategies">
+      <UniqueIdentifier>{babb2fbd-bd10-487f-b7f7-c956c1081c06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\esper\defs\BytesDef.h">
+    <ClInclude Include="src\data\BytesData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\DataContainer.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\FloatData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\Int0Data.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\IntData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\StringData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\Def.h">
       <Filter>defs</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\defs\Def.h">
+    <ClInclude Include="src\defs\MainRecordDef.h">
       <Filter>defs</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\elements\Container.h">
+    <ClInclude Include="src\defs\MaybeSubrecordDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\MembersDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\StructDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\Container.h">
       <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\elements\Element.h">
+    <ClInclude Include="src\elements\Element.h">
       <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\elements\MainRecord.h">
+    <ClInclude Include="src\elements\MainRecord.h">
       <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\elements\PluginFile.h">
+    <ClInclude Include="src\elements\MainRecordHeader.h">
       <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\elements\ValueElement.h">
+    <ClInclude Include="src\elements\PluginFile.h">
       <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\setup\DefinitionManager.h">
-      <Filter>setup</Filter>
+    <ClInclude Include="src\elements\ValueElement.h">
+      <Filter>elements</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\setup\Session.h">
-      <Filter>setup</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\setup\SessionOptions.h">
-      <Filter>setup</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\helpers\errors.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\helpers\json.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\helpers\helpers.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\helpers\strings.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\FloatDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\MembersDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\MaybeSubrecordDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\StructDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\ValueDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\setup\PluginManager.h">
-      <Filter>setup</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\GroupHeader.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\elements\MainRecordHeader.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\PluginFileSource.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\RecordHeader.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\Signature.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\Subrecord.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\parsing\MemoryMap.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\defs\MainRecordDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\esper.h" />
-    <ClInclude Include="include\esper\helpers\stubs.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\BytesData.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\DataContainer.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\Int8Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\Int16Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\Int32Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\UInt8Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\UInt16Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\UInt32Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\FloatData.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\StringData.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\data\Int0Data.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\esper\flags\Flags.h">
+    <ClInclude Include="src\flags\ElementState.h">
       <Filter>flags</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\flags\ElementState.h">
+    <ClInclude Include="src\flags\Flags.h">
       <Filter>flags</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\setup\LoadOrderSlot.h">
+    <ClInclude Include="src\helpers\errors.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers\filesystem.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers\helpers.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers\json.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers\strings.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers\stubs.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\GroupHeader.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\MemoryMap.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\PluginFileSource.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\RecordHeader.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\Signature.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\Subrecord.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsing\VariantData.h">
+      <Filter>parsing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\setup\DefinitionManager.h">
       <Filter>setup</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\setup\Game.h">
+    <ClInclude Include="src\setup\Game.h">
       <Filter>setup</Filter>
     </ClInclude>
-    <ClInclude Include="include\esper\setup\games.h">
+    <ClInclude Include="src\setup\games.h">
       <Filter>setup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\setup\PluginManager.h">
+      <Filter>setup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\setup\PluginSlot.h">
+      <Filter>setup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\setup\Session.h">
+      <Filter>setup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\setup\SessionOptions.h">
+      <Filter>setup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\esper.h" />
+    <ClInclude Include="src\data\UserBytesData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\UserFloatData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\UserIntData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\UserStringData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\StructElement.h">
+      <Filter>elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\BytesDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\FloatDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\StringDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\ValueDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\FormIdDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\Int0Def.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\values\IntegerDef.h">
+      <Filter>defs\values</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\FormatDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\FormIdData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\UserFormIdData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\interfaces\MasterManager.h">
+      <Filter>elements\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\ResolutionStrategy.h">
+      <Filter>resolution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\methods.h">
+      <Filter>resolution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveByIndex.h">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveByName.h">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveBySignature.h">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveParent.h">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveReference.h">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\ContainerMatch.h">
+      <Filter>resolution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\ElementMatch.h">
+      <Filter>resolution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\MatchData.h">
+      <Filter>resolution</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\esper\empty_file.cpp" />
+    <ClCompile Include="src\defs\Def.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MainRecordDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MaybeSubrecordDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MembersDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\StructDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\Container.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\Element.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\MainRecord.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\MainRecordHeader.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\PluginFile.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\ValueElement.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\empty_file.cpp" />
+    <ClCompile Include="src\defs\values\BytesDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\FloatDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\StringDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\ValueDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\FormIdDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\Int0Def.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\values\IntegerDef.cpp">
+      <Filter>defs\values</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\FormatDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\FormIdData.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\interfaces\MasterManager.cpp">
+      <Filter>elements\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resolution\ResolutionStrategy.cpp">
+      <Filter>resolution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\resolution\methods.cpp">
+      <Filter>resolution</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

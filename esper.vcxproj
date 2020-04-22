@@ -18,6 +18,100 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\data\BytesData.h" />
+    <ClInclude Include="src\data\DataContainer.h" />
+    <ClInclude Include="src\data\FloatData.h" />
+    <ClInclude Include="src\data\FormIdData.h" />
+    <ClInclude Include="src\data\Int0Data.h" />
+    <ClInclude Include="src\data\IntData.h" />
+    <ClInclude Include="src\data\StringData.h" />
+    <ClInclude Include="src\data\UserBytesData.h" />
+    <ClInclude Include="src\data\UserFloatData.h" />
+    <ClInclude Include="src\data\UserFormIdData.h" />
+    <ClInclude Include="src\data\UserIntData.h" />
+    <ClInclude Include="src\data\UserStringData.h" />
+    <ClInclude Include="src\defs\Def.h" />
+    <ClInclude Include="src\defs\FormatDef.h" />
+    <ClInclude Include="src\defs\MainRecordDef.h" />
+    <ClInclude Include="src\defs\MaybeSubrecordDef.h" />
+    <ClInclude Include="src\defs\MembersDef.h" />
+    <ClInclude Include="src\defs\StructDef.h" />
+    <ClInclude Include="src\defs\values\BytesDef.h" />
+    <ClInclude Include="src\defs\values\FloatDef.h" />
+    <ClInclude Include="src\defs\values\FormIdDef.h" />
+    <ClInclude Include="src\defs\values\Int0Def.h" />
+    <ClInclude Include="src\defs\values\IntegerDef.h" />
+    <ClInclude Include="src\defs\values\StringDef.h" />
+    <ClInclude Include="src\defs\values\ValueDef.h" />
+    <ClInclude Include="src\elements\Container.h" />
+    <ClInclude Include="src\elements\Element.h" />
+    <ClInclude Include="src\elements\interfaces\MasterManager.h" />
+    <ClInclude Include="src\elements\MainRecord.h" />
+    <ClInclude Include="src\elements\MainRecordHeader.h" />
+    <ClInclude Include="src\elements\PluginFile.h" />
+    <ClInclude Include="src\elements\StructElement.h" />
+    <ClInclude Include="src\elements\ValueElement.h" />
+    <ClInclude Include="src\esper.h" />
+    <ClInclude Include="src\flags\ElementState.h" />
+    <ClInclude Include="src\flags\Flags.h" />
+    <ClInclude Include="src\helpers\errors.h" />
+    <ClInclude Include="src\helpers\filesystem.h" />
+    <ClInclude Include="src\helpers\helpers.h" />
+    <ClInclude Include="src\helpers\json.h" />
+    <ClInclude Include="src\helpers\strings.h" />
+    <ClInclude Include="src\helpers\stubs.h" />
+    <ClInclude Include="src\parsing\GroupHeader.h" />
+    <ClInclude Include="src\parsing\MemoryMap.h" />
+    <ClInclude Include="src\parsing\PluginFileSource.h" />
+    <ClInclude Include="src\parsing\RecordHeader.h" />
+    <ClInclude Include="src\parsing\Signature.h" />
+    <ClInclude Include="src\parsing\Subrecord.h" />
+    <ClInclude Include="src\parsing\VariantData.h" />
+    <ClInclude Include="src\resolution\ContainerMatch.h" />
+    <ClInclude Include="src\resolution\ElementMatch.h" />
+    <ClInclude Include="src\resolution\MatchData.h" />
+    <ClInclude Include="src\resolution\methods.h" />
+    <ClInclude Include="src\resolution\ResolutionStrategy.h" />
+    <ClInclude Include="src\resolution\strategies\resolveByIndex.h" />
+    <ClInclude Include="src\resolution\strategies\resolveByName.h" />
+    <ClInclude Include="src\resolution\strategies\resolveBySignature.h" />
+    <ClInclude Include="src\resolution\strategies\resolveParent.h" />
+    <ClInclude Include="src\resolution\strategies\resolveReference.h" />
+    <ClInclude Include="src\setup\DefinitionManager.h" />
+    <ClInclude Include="src\setup\Game.h" />
+    <ClInclude Include="src\setup\games.h" />
+    <ClInclude Include="src\setup\PluginManager.h" />
+    <ClInclude Include="src\setup\PluginSlot.h" />
+    <ClInclude Include="src\setup\Session.h" />
+    <ClInclude Include="src\setup\SessionOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\data\FormIdData.cpp" />
+    <ClCompile Include="src\defs\Def.cpp" />
+    <ClCompile Include="src\defs\FormatDef.cpp" />
+    <ClCompile Include="src\defs\MainRecordDef.cpp" />
+    <ClCompile Include="src\defs\MaybeSubrecordDef.cpp" />
+    <ClCompile Include="src\defs\MembersDef.cpp" />
+    <ClCompile Include="src\defs\StructDef.cpp" />
+    <ClCompile Include="src\defs\values\BytesDef.cpp" />
+    <ClCompile Include="src\defs\values\FloatDef.cpp" />
+    <ClCompile Include="src\defs\values\FormIdDef.cpp" />
+    <ClCompile Include="src\defs\values\Int0Def.cpp" />
+    <ClCompile Include="src\defs\values\IntegerDef.cpp" />
+    <ClCompile Include="src\defs\values\StringDef.cpp" />
+    <ClCompile Include="src\defs\values\ValueDef.cpp" />
+    <ClCompile Include="src\elements\Container.cpp" />
+    <ClCompile Include="src\elements\Element.cpp" />
+    <ClCompile Include="src\elements\interfaces\MasterManager.cpp" />
+    <ClCompile Include="src\elements\MainRecord.cpp" />
+    <ClCompile Include="src\elements\MainRecordHeader.cpp" />
+    <ClCompile Include="src\elements\PluginFile.cpp" />
+    <ClCompile Include="src\elements\ValueElement.cpp" />
+    <ClCompile Include="src\empty_file.cpp" />
+    <ClCompile Include="src\resolution\methods.cpp" />
+    <ClCompile Include="src\resolution\ResolutionStrategy.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{AE8D6B1D-BF59-4C6C-812E-AC6063243F2B}</ProjectGuid>
@@ -75,57 +169,6 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="include\esper\data\BytesData.h" />
-    <ClInclude Include="include\esper\data\DataContainer.h" />
-    <ClInclude Include="include\esper\data\FloatData.h" />
-    <ClInclude Include="include\esper\data\Int0Data.h" />
-    <ClInclude Include="include\esper\data\Int16Data.h" />
-    <ClInclude Include="include\esper\data\Int32Data.h" />
-    <ClInclude Include="include\esper\data\Int8Data.h" />
-    <ClInclude Include="include\esper\data\StringData.h" />
-    <ClInclude Include="include\esper\data\UInt16Data.h" />
-    <ClInclude Include="include\esper\data\UInt32Data.h" />
-    <ClInclude Include="include\esper\data\UInt8Data.h" />
-    <ClInclude Include="include\esper\defs\BytesDef.h" />
-    <ClInclude Include="include\esper\defs\Def.h" />
-    <ClInclude Include="include\esper\defs\FloatDef.h" />
-    <ClInclude Include="include\esper\defs\MainRecordDef.h" />
-    <ClInclude Include="include\esper\defs\MaybeSubrecordDef.h" />
-    <ClInclude Include="include\esper\defs\MembersDef.h" />
-    <ClInclude Include="include\esper\defs\StructDef.h" />
-    <ClInclude Include="include\esper\defs\ValueDef.h" />
-    <ClInclude Include="include\esper\elements\Container.h" />
-    <ClInclude Include="include\esper\elements\Element.h" />
-    <ClInclude Include="include\esper\elements\MainRecord.h" />
-    <ClInclude Include="include\esper\elements\MainRecordHeader.h" />
-    <ClInclude Include="include\esper\elements\PluginFile.h" />
-    <ClInclude Include="include\esper\elements\ValueElement.h" />
-    <ClInclude Include="include\esper\esper.h" />
-    <ClInclude Include="include\esper\flags\ElementState.h" />
-    <ClInclude Include="include\esper\flags\Flags.h" />
-    <ClInclude Include="include\esper\helpers\errors.h" />
-    <ClInclude Include="include\esper\helpers\helpers.h" />
-    <ClInclude Include="include\esper\helpers\json.h" />
-    <ClInclude Include="include\esper\helpers\strings.h" />
-    <ClInclude Include="include\esper\helpers\stubs.h" />
-    <ClInclude Include="include\esper\parsing\GroupHeader.h" />
-    <ClInclude Include="include\esper\parsing\MemoryMap.h" />
-    <ClInclude Include="include\esper\parsing\PluginFileSource.h" />
-    <ClInclude Include="include\esper\parsing\RecordHeader.h" />
-    <ClInclude Include="include\esper\parsing\Signature.h" />
-    <ClInclude Include="include\esper\parsing\Subrecord.h" />
-    <ClInclude Include="include\esper\setup\DefinitionManager.h" />
-    <ClInclude Include="include\esper\setup\Game.h" />
-    <ClInclude Include="include\esper\setup\games.h" />
-    <ClInclude Include="include\esper\setup\LoadOrderSlot.h" />
-    <ClInclude Include="include\esper\setup\PluginManager.h" />
-    <ClInclude Include="include\esper\setup\Session.h" />
-    <ClInclude Include="include\esper\setup\SessionOptions.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="include\esper\empty_file.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
