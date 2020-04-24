@@ -11,29 +11,12 @@ namespace esper {
 	public:
 		static string defType;
 
-		Def(DefinitionManager* manager, JsonValue& src, void* parent)
-		: manager(manager), src(src), parent((Def*)parent) {}
-
-		virtual bool hasSignature(const Signature& signature) {
-			return false;
-		}
-
-		virtual bool hasPrimarySignature(const Signature& signature) {
-			return false;
-		}
-
-		virtual Element* build(Container* container) {
-			throw error("unimplemented");
-		}
-
-		virtual void subrecordFound(Element* element, Subrecord* subrecord) {
-			dataFound(element, subrecord->getData(), subrecord->getEnd());
-		}
-
-		virtual uint8_t* dataFound(Element* element, uint8_t* dataPtr, uint8_t* endPtr) {
-			throw error("unimplemented");
-		}
-
+		Def(DefinitionManager* manager, JsonValue& src, void* parent);
+		virtual bool hasSignature(const Signature& signature);
+		virtual bool hasPrimarySignature(const Signature& signature);
+		virtual Element* build(Container* container);
+		virtual void subrecordFound(Element* element, Subrecord* subrecord);
+		virtual uint8_t* dataFound(Element* element, uint8_t* dataPtr, uint8_t* endPtr);
 		virtual string getName();
 		size_t getSize();
 

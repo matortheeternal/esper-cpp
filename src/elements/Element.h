@@ -17,9 +17,9 @@ namespace esper {
 		virtual size_t getSize();
 		virtual void getMasterReferences();
 
-		Def* def;
-		Container* container;
-		PluginFile* file;
-		ElementState state;
+		Def* def = nullptr;
+		Container* container = nullptr;
+		PluginFile* file = nullptr;
+		ElementState state = ElementState();
 	};
 }

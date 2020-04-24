@@ -10,6 +10,7 @@
 namespace esper {
 	using JsonValue = rapidjson::Value;
 	using JsonDocument = rapidjson::Document;
+	using JsonIterator = rapidjson::Value::ConstMemberIterator;
 
 	using namespace std;
 

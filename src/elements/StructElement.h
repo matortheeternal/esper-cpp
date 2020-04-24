@@ -7,7 +7,7 @@ namespace esper {
 		StructElement(Container* container, Def* def)
 		: Container(container, def) {}
 
-		bool getSorted() {
+		bool ordered() {
 			return true;
 		}
 	};

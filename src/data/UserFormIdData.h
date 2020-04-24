@@ -2,13 +2,15 @@
 #include "FormIdData.h"
 
 namespace esper {
+	size_t formIDSize = 4;
+
 	class UserFormIdData : public FormIdData {
 	public:
 		UserFormIdData(const string& value) {
-			// TODO
+			parseBytes(value, dataPtr, formIDSize);
 		}
 
-		UserFormIdData(const PluginFile* file, uint32_t localFormId);
+		UserFormIdData(PluginFile* file, uint32_t localFormId);
 
 		~UserFormIdData() {
 			free(dataPtr);

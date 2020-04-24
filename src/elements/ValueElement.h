@@ -14,10 +14,10 @@ namespace esper {
 		DataContainer* getData();
 		void setData(DataContainer* data);
 
-		virtual string getValue() {};
-		virtual void setValue(string value) {};
+		string getValue();
+		void setValue(string value);
+		MainRecord* getReferencedRecord();
 
 		DataContainer* data = nullptr;
-		ElementState flags = ElementState();
 	};
 }

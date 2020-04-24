@@ -21,7 +21,7 @@ namespace esper {
 
 		virtual string toString() = 0;
 
-		uint8_t* dataPtr;
+		uint8_t* dataPtr = nullptr;
 	};
 }
 

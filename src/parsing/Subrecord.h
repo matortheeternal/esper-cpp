@@ -1,8 +1,7 @@
-#ifndef ESPER_SUBRECORD_H
-#define ESPER_SUBRECORD_H
+#pragma once
 
 #include <cstdint>
-#include "signature.h"
+#include "Signature.h"
 
 namespace esper {
 	class Subrecord {
@@ -27,5 +26,3 @@ namespace esper {
 
 	size_t Subrecord::baseSize = 6;
 }
-
-#endif

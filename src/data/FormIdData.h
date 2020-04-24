@@ -12,7 +12,7 @@ namespace esper {
 		FormIdData(PluginFile* file, uint8_t* dataPtr)
 			: file(file), IntData<uint32_t>(dataPtr) {};
 
-		uint8_t getOrdinal() {
+		uint8_t getLocalOrdinal() {
 			return *dataPtr;
 		}
 
@@ -24,7 +24,7 @@ namespace esper {
 			return getLocalFormId() == 0;
 		}
 
-		uint32_t toFileFormId(PluginFile* file);
+		uint32_t toGlobalFormId();
 		string toString();
 		MainRecord* resolveRecord();
 

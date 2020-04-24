@@ -1,8 +1,31 @@
-#include "../elements/Container.h"
 #include "Def.h"
 
 namespace esper {
-	Element* Def::build(Container* container, Subrecord* subrecord) {
+
+	Def::Def(DefinitionManager* manager, JsonValue& src, void* parent)
+		: manager(manager), src(src), parent((Def*)parent) {}
+
+	bool Def::hasSignature(const Signature& signature) {
+		return false;
+	}
+
+	bool Def::hasPrimarySignature(const Signature& signature) {
+		return false;
+	}
+
+	Element* Def::build(Container* container) {
+		throw error("unimplemented");
+	}
+
+	void Def::subrecordFound(Element* element, Subrecord* subrecord) {
+		dataFound(element, subrecord->getData(), subrecord->getEnd());
+	}
+
+	uint8_t* Def::dataFound(Element* element, uint8_t* dataPtr, uint8_t* endPtr) {
+		throw error("unimplemented");
+	}
+
+	Element* Def::build(Container* container) {
 		throw error("unimplemented");
 	}
 

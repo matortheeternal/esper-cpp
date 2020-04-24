@@ -24,7 +24,7 @@ namespace esper {
 			return getData();
 		}
 
-		size_t size;
+		size_t size = 0;
 	};
 }
 

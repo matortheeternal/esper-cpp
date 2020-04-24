@@ -34,6 +34,9 @@
     <Filter Include="resolution\strategies">
       <UniqueIdentifier>{babb2fbd-bd10-487f-b7f7-c956c1081c06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="defs\formats">
+      <UniqueIdentifier>{1306374b-2648-4908-80a8-c94d4321101e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\data\BytesData.h">
@@ -106,9 +109,6 @@
       <Filter>helpers</Filter>
     </ClInclude>
     <ClInclude Include="src\helpers\strings.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\helpers\stubs.h">
       <Filter>helpers</Filter>
     </ClInclude>
     <ClInclude Include="src\parsing\GroupHeader.h">
@@ -190,9 +190,6 @@
     <ClInclude Include="src\defs\values\IntegerDef.h">
       <Filter>defs\values</Filter>
     </ClInclude>
-    <ClInclude Include="src\defs\FormatDef.h">
-      <Filter>defs</Filter>
-    </ClInclude>
     <ClInclude Include="src\data\FormIdData.h">
       <Filter>data</Filter>
     </ClInclude>
@@ -231,6 +228,36 @@
     </ClInclude>
     <ClInclude Include="src\resolution\MatchData.h">
       <Filter>resolution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\formats\DivideDef.h">
+      <Filter>defs\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\formats\EnumDef.h">
+      <Filter>defs\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\formats\FlagsDef.h">
+      <Filter>defs\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\formats\FormatDef.h">
+      <Filter>defs\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\formats\FormatUnionDef.h">
+      <Filter>defs\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\ArrayDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\MemberArrayDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\MemberStructDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\MemberUnionDef.h">
+      <Filter>defs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defs\UnionDef.h">
+      <Filter>defs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +316,6 @@
     <ClCompile Include="src\defs\values\IntegerDef.cpp">
       <Filter>defs\values</Filter>
     </ClCompile>
-    <ClCompile Include="src\defs\FormatDef.cpp">
-      <Filter>defs</Filter>
-    </ClCompile>
     <ClCompile Include="src\data\FormIdData.cpp">
       <Filter>data</Filter>
     </ClCompile>
@@ -303,6 +327,36 @@
     </ClCompile>
     <ClCompile Include="src\resolution\methods.cpp">
       <Filter>resolution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\setup\PluginSlot.cpp">
+      <Filter>setup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\setup\PluginManager.cpp">
+      <Filter>setup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\ArrayDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MemberArrayDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MemberStructDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\MemberUnionDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\UnionDef.cpp">
+      <Filter>defs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\formats\FormatDef.cpp">
+      <Filter>defs\formats</Filter>
+    </ClCompile>
+    <ClCompile Include="src\defs\formats\EnumDef.cpp">
+      <Filter>defs\formats</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\UserFormIdData.cpp">
+      <Filter>data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

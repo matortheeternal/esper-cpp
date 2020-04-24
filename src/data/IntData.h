@@ -18,5 +18,9 @@ namespace esper {
 		string toString() {
 			return to_str<T>(getData());
 		}
+
+		uint8_t getSize() {
+			return sizeof T;
+		}
 	};
 }

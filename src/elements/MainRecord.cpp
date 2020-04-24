@@ -45,7 +45,7 @@ namespace esper {
 		elements = nullptr;
 	}
 
-	bool MainRecord::sorted() {
+	bool MainRecord::ordered() {
 		return true;
 	}
 

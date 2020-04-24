@@ -3,11 +3,8 @@
 #include "../elements/PluginFile.h"
 
 namespace esper {
-	uint32_t FormIdData::toFileFormId(PluginFile* file) {
-		auto ordinal = file->fileToOrdinal(this->file);
-		if (ordinal == -1)
-			throw MissingMasterError(file, this->file);
-		return ordinal * 0x1000000 + getLocalFormId();
+	uint32_t FormIdData::toGlobalFormId() {
+		// TODO
 	}
 
 	string FormIdData::toString() {

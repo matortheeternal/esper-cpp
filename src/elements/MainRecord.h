@@ -13,7 +13,7 @@ namespace esper {
 		vector<Subrecord*>* getUnknownSubrecords();
 		void buildElements();
 		void releaseElements();
-		bool sorted();
+		bool ordered();
 
 		RecordHeader* header = nullptr;
 		vector<Subrecord*>* subrecords = nullptr;

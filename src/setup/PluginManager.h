@@ -1,18 +1,18 @@
-#ifndef ESPER_PLUGIN_MANAGER_H_
-#define ESPER_PLUGIN_MANAGER_H_
+#pragma once
 
 #include "Game.h"
 #include <vector>
 #include "PluginSlot.h"
+#include "../helpers/strings.h"
 
 namespace esper {
 	class PluginManager {
 	public:
-		PluginManager(Game& game, const SessionOptions* options)
-			: usingLightPlugins(options->allowLightPlugins && game.supportsLightPlugins()),
+		PluginManager(Game& game, Session* session)
+			: usingLightPlugins(session->options->allowLightPlugins && game.supportsLightPlugins()),
 			maxLightPluginIndex(usingLightPlugins ? 4095 : 0),
 			maxFullPluginIndex(usingLightPlugins ? 253 : 254),
-			options(options) {}
+			session(session) {}
 
 		bool shouldUseLightSlot(PluginFile* plugin) {
 			return usingLightPlugins && plugin->isEsl();
@@ -47,19 +47,31 @@ namespace esper {
 
 		void addFile(PluginFile* plugin) {
 			plugins->push_back(plugin);
-			if (!options->emulateGlobalLoadOrder) return;
+			if (!session->options->emulateGlobalLoadOrder) return;
 			assignLoadOrder(plugin);
+		}
+
+		PluginFile* createDummyPlugin(wstring filename) {
+			PluginFile* dummyPlugin = new PluginFile(session, filename);
+			addFile(dummyPlugin);
+			return dummyPlugin;
+		}
+
+		PluginFile* getFileByName(wstring filename, bool createDummyIfMissing) {
+			for (auto &plugin : *plugins) {
+				if (wstrEquals(filename, plugin->filename)) return plugin;
+			}
+			if (!createDummyIfMissing) return nullptr;
+			return createDummyPlugin(filename);
 		}
 
 		const bool usingLightPlugins;
 		const uint16_t maxLightPluginIndex;
 		const uint8_t maxFullPluginIndex;
-		const SessionOptions* options;
+		Session* session;
 
 		vector<PluginFile*>* plugins = new vector<PluginFile*>();
 		vector<FullPluginSlot*>* fullPluginSlots = new vector<FullPluginSlot*>();
 		vector<LightPluginSlot*>* lightPluginSlots = new vector<LightPluginSlot*>();
 	};
 }
-
-#endif

@@ -11,7 +11,7 @@ namespace esper {
 
 		void initElements(const size_t targetSize = 0);
 		void elementAdded(Element* element);
-		virtual bool sorted();
+		virtual bool ordered();
 
 		vector<Element*>* elements;
 	};

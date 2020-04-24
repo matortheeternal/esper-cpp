@@ -7,16 +7,18 @@ namespace esper {
 
 	class PluginFile;
 	class MainRecord;
+	class Element;
 
-	using ReferenceMap = unordered_map<string, vector<MainRecord*>>;
-	using ReferenceCountMap = unordered_map<string, uint32_t>;
+	using ReferenceMap = unordered_map<wstring, vector<MainRecord*>>;
+	using ReferenceCountMap = unordered_map<wstring, uint32_t>;
 	using FileList = vector<PluginFile*>;
-	using IndexesMap = unordered_map<string, uint8_t>;
+	using IndexesMap = unordered_map<wstring, uint8_t>;
 
 	class MasterManager {
 	public:
 		MasterManager() {}
 
+		Element* getMastersElement();
 		void initMasters();
 		void initMasterIndexes();
 		void updateMastersElement();
@@ -37,6 +39,5 @@ namespace esper {
 		FileList* userMasters = new FileList();
 		IndexesMap* masterIndexes = new IndexesMap();
 		IndexesMap* userMasterIndexes = new IndexesMap();
-
 	};
 }

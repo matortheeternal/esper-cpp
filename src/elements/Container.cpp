@@ -1,5 +1,5 @@
 #include "Container.h"
-#include "Element.h"
+#include "../defs/Def.h"
 
 namespace esper {
 	void Container::initElements(const size_t targetSize = 0) {
@@ -7,14 +7,14 @@ namespace esper {
 	}
 
 	void Container::elementAdded(Element* element) {
-		if (sorted()) {
-			(*elements)[element->def->sortOrder] = element;
+		if (ordered()) {
+			elements->at(element->def->sortOrder) = element;
 		} else {
 			elements->push_back(element);
 		}
 	}
 
-	bool Container::sorted() {
+	bool Container::ordered() {
 		return false;
 	}
 }

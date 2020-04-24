@@ -1,5 +1,4 @@
-#ifndef ESPER_SIGNATURE_H_
-#define ESPER_SIGNATURE_H_
+#pragma once
 
 #include "../helpers/errors.h"
 #include "../helpers/json.h"
@@ -36,5 +35,3 @@ namespace esper {
 			) {}
 	};
 }
-
-#endif

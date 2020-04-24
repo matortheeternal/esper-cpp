@@ -1,5 +1,4 @@
-#ifndef ESPER_PLUGIN_FILE_H_
-#define ESPER_PLUGIN_FILE_H_
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -7,6 +6,8 @@
 #include "../setup/Session.h"
 #include "../helpers/filesystem.h"
 #include "Container.h"
+#include "MainRecord.h"
+#include "./interfaces/MasterManager.h"
 
 namespace esper {
 	using namespace std;
@@ -15,62 +16,27 @@ namespace esper {
 		bool temporary;
 	};
 
-	class PluginFile : public Container {
+	class PluginFile : public Container, public MasterManager {
 	public:
-		PluginFile(Session* session, wstring filePath, PluginFileOptions options)
-		: Container(nullptr, nullptr) {
-			this->session = session;
-			this->filePath = filePath;
-			this->filename = getFileName(filePath);
-			this->file = this;
-			this->options = options;
-			if (!options.temporary) session->pluginManager->addFile(this);
-		}
+		PluginFile(Session* session, wstring filename);
 
-		static PluginFile* load(Session* session, wstring filePath, PluginFileOptions options) {
-			assertFileExists(filePath);
-			PluginFile* plugin = new PluginFile(session, filePath, options);
-			plugin->source = new PluginFileSource(filePath);
-			plugin->loadFileHeader();
-			plugin->loadGroups();
-			return plugin;
-		}
+		PluginFile(Session* session, wstring filePath, PluginFileOptions options);
 
-		static wstring* getMasterFilenames(Session* session, wstring filePath) {
-			PluginFileOptions options = { true };
-			PluginFile* plugin = new PluginFile(session, filePath, options);
-			plugin->source = new PluginFileSource(filePath);
-			plugin->loadFileHeader();
-			wstring* masterFilenames = plugin->getMasterFilenames();
-			delete plugin;
-			return masterFilenames;
-		}
-
-		wstring* getMasterFilenames() {
-			// TODO
-		}
-
-		void loadFileHeader() {
-
-		}
-
-		void loadGroups() {
-
-		}
-
-		bool isEsl() {
-			return false;
-		}
+		static PluginFile* load(Session* session, wstring filePath, PluginFileOptions options);
+		static wstring* getMasterFilenames(Session* session, wstring filePath);
+		
+		void loadFileHeader();
+		void loadGroups();
+		bool isEsl();
+		bool isDummy();
+		PluginFile* getFile();
 
 		MainRecord* header;
 		Session* session;
 		PluginFileOptions options;
 		wstring filePath;
 		wstring filename;
-		PluginFile* file;
 		PluginFileSource* source;
 		PluginSlot* pluginSlot;
 	};
 }
-
-#endif

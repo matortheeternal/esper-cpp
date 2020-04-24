@@ -1,5 +1,4 @@
-#ifndef ESPER_DEFINITION_MANAGER_H_
-#define ESPER_DEFINITION_MANAGER_H_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -105,5 +104,3 @@ namespace esper {
 		};
 	}
 }
-
-#endif

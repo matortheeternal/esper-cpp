@@ -7,7 +7,6 @@ namespace esper {
 		using namespace std;
 
 		class MatchData;
-		class Element;
 
 		typedef MatchData* (*MatchFunction)(Element* element, const string& pathPart);
 		typedef Element* (*ResolveFunction)(MatchData* match);

@@ -3,50 +3,34 @@
 
 #include <cstdint>
 #include "../helpers/errors.h"
+#include "../elements/PluginFile.h"
 
 namespace esper {
-	class PluginSlot;
-
-	class PluginFile {
-	public:
-		bool isEsl() {}
-
-		PluginSlot* pluginSlot;
-	};
-
 	class PluginSlot {
 	public:
-		PluginSlot(PluginFile* plugin) : plugin(plugin) {
-			plugin->pluginSlot = this;
-		}
+		PluginSlot(PluginFile* plugin);
+
+		virtual uint32_t getOrdinal();
 
 		PluginFile* plugin;
 	};
 
 	class FullPluginSlot : public PluginSlot {
 	public:
-		FullPluginSlot(PluginFile* plugin, uint8_t index) 
-		: PluginSlot(plugin), index(index) {}
+		FullPluginSlot(PluginFile* plugin, uint8_t index);
 
-		uint32_t getOrdinal() {
-			return index << 24;
-		}
+		uint32_t getOrdinal();
 
 		uint8_t index;
 	};
-
-	
 
 	class LightPluginSlot : public PluginSlot {
 	public:
 		static constexpr uint32_t BASE_ORDINAL = 0xFE000000;
 
-		LightPluginSlot(PluginFile* plugin, uint16_t index) 
-		: PluginSlot(plugin), index(index) {}
+		LightPluginSlot(PluginFile* plugin, uint16_t index);
 
-		uint32_t getOrdinal() {
-			return BASE_ORDINAL | (index << 12);
-		}
+		uint32_t getOrdinal();
 
 		uint16_t index;
 	};

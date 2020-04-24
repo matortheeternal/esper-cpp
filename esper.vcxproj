@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -31,12 +31,21 @@
     <ClInclude Include="src\data\UserFormIdData.h" />
     <ClInclude Include="src\data\UserIntData.h" />
     <ClInclude Include="src\data\UserStringData.h" />
+    <ClInclude Include="src\defs\ArrayDef.h" />
     <ClInclude Include="src\defs\Def.h" />
-    <ClInclude Include="src\defs\FormatDef.h" />
+    <ClInclude Include="src\defs\formats\DivideDef.h" />
+    <ClInclude Include="src\defs\formats\EnumDef.h" />
+    <ClInclude Include="src\defs\formats\FlagsDef.h" />
+    <ClInclude Include="src\defs\formats\FormatDef.h" />
+    <ClInclude Include="src\defs\formats\FormatUnionDef.h" />
     <ClInclude Include="src\defs\MainRecordDef.h" />
     <ClInclude Include="src\defs\MaybeSubrecordDef.h" />
+    <ClInclude Include="src\defs\MemberArrayDef.h" />
     <ClInclude Include="src\defs\MembersDef.h" />
+    <ClInclude Include="src\defs\MemberStructDef.h" />
+    <ClInclude Include="src\defs\MemberUnionDef.h" />
     <ClInclude Include="src\defs\StructDef.h" />
+    <ClInclude Include="src\defs\UnionDef.h" />
     <ClInclude Include="src\defs\values\BytesDef.h" />
     <ClInclude Include="src\defs\values\FloatDef.h" />
     <ClInclude Include="src\defs\values\FormIdDef.h" />
@@ -60,7 +69,6 @@
     <ClInclude Include="src\helpers\helpers.h" />
     <ClInclude Include="src\helpers\json.h" />
     <ClInclude Include="src\helpers\strings.h" />
-    <ClInclude Include="src\helpers\stubs.h" />
     <ClInclude Include="src\parsing\GroupHeader.h" />
     <ClInclude Include="src\parsing\MemoryMap.h" />
     <ClInclude Include="src\parsing\PluginFileSource.h" />
@@ -88,12 +96,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\data\FormIdData.cpp" />
+    <ClCompile Include="src\data\UserFormIdData.cpp" />
+    <ClCompile Include="src\defs\ArrayDef.cpp" />
     <ClCompile Include="src\defs\Def.cpp" />
-    <ClCompile Include="src\defs\FormatDef.cpp" />
+    <ClCompile Include="src\defs\formats\EnumDef.cpp" />
+    <ClCompile Include="src\defs\formats\FormatDef.cpp" />
     <ClCompile Include="src\defs\MainRecordDef.cpp" />
     <ClCompile Include="src\defs\MaybeSubrecordDef.cpp" />
+    <ClCompile Include="src\defs\MemberArrayDef.cpp" />
     <ClCompile Include="src\defs\MembersDef.cpp" />
+    <ClCompile Include="src\defs\MemberStructDef.cpp" />
+    <ClCompile Include="src\defs\MemberUnionDef.cpp" />
     <ClCompile Include="src\defs\StructDef.cpp" />
+    <ClCompile Include="src\defs\UnionDef.cpp" />
     <ClCompile Include="src\defs\values\BytesDef.cpp" />
     <ClCompile Include="src\defs\values\FloatDef.cpp" />
     <ClCompile Include="src\defs\values\FormIdDef.cpp" />
@@ -111,6 +126,8 @@
     <ClCompile Include="src\empty_file.cpp" />
     <ClCompile Include="src\resolution\methods.cpp" />
     <ClCompile Include="src\resolution\ResolutionStrategy.cpp" />
+    <ClCompile Include="src\setup\PluginManager.cpp" />
+    <ClCompile Include="src\setup\PluginSlot.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -167,6 +184,12 @@
     <ClCompile>
       <AdditionalIncludeDirectories>E:\dev\git\esper\include\rapidjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>.\include\rapidjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

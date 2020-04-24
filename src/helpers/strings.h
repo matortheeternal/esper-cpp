@@ -59,7 +59,7 @@ namespace esper {
 		size = (value.size() + 1) / 3;
 		bytes = new uint8_t[size];
 		const char* characters = value.c_str();
-		for (auto i = 0; i < size; i++)
+		for (size_t i = 0; i < size; i++)
 			bytes[i] = parseByte(characters + 3 * i);
 	}
 	
@@ -112,6 +112,10 @@ namespace esper {
 		return wstring_convert<codecvt_utf8<wchar_t>>().to_bytes(str);
 	}
 
+	wstring stringToWString(string str) {
+		return wstring_convert<codecvt_utf8<wchar_t>>().from_bytes(str);
+	}
+
 	string pad(string& s, uint8_t width, char c = ' ') {
 		if (s.size() < width)
 			s.insert(0, width - s.size(), c);
@@ -126,6 +130,10 @@ namespace esper {
 
 	bool strEquals(const string& s1, const string& s2) {
 		return _stricmp(s1.c_str(), s2.c_str()) == 0;
+	}
+
+	bool wstrEquals(const wstring& s1, const wstring& s2) {
+		return _wcsicmp(s1.c_str(), s2.c_str()) == 0;
 	}
 }
 

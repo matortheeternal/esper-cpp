@@ -1,7 +1,6 @@
 #include "methods.h"
 #include "ResolutionStrategy.h"
-#include "../elements/Element.h"
-#include "../elements/Container.h"
+#include "../elements/ValueElement.h"
 
 namespace esper {
 	namespace PathResolution {
@@ -34,6 +33,14 @@ namespace esper {
 			if (container == nullptr)
 				throw error("Element does not have children.");
 			return *container->elements;
+		}
+
+		string getValue(Element* element, string path = "") {
+			Element* target = getElement(element, path);
+			ValueElement* valueElement = dynamic_cast<ValueElement*>(target);
+			if (valueElement == nullptr)
+				throw error("Element does not have a value.");
+			return valueElement->data->toString();
 		}
 	}
 }

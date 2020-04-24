@@ -1,9 +1,11 @@
+#pragma once
+
 #include "MainRecord.h"
 
-class MainRecordHeader : public Container {
-public:
-	MainRecordHeader(MainRecord* record, Def* def)
-	: Container(record, def) {
-
-	}
-};
+namespace esper {
+	class MainRecordHeader : public Container {
+	public:
+		MainRecordHeader(MainRecord* record, Def* def)
+		: Container(record, def) {}
+	};
+}
