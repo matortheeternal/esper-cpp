@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdio>
 #include <list>
+#include <functional>
 #include "stringbuffer.h"
 #include "writer.h"
 #include "filereadstream.h"
@@ -11,6 +12,7 @@ namespace esper {
 	using JsonValue = rapidjson::Value;
 	using JsonDocument = rapidjson::Document;
 	using JsonIterator = rapidjson::Value::ConstMemberIterator;
+	using JsonEntryCallback = std::function<bool(const JsonValue&, const JsonValue&)>;
 
 	using namespace std;
 
@@ -54,6 +56,12 @@ namespace esper {
 
 	bool propertyIsPositiveIntOrZero(JsonValue* value, string key) {
 		return (*value)[key].IsInt() && (*value)[key].GetInt() >= 0;
+	}
+
+	JsonIterator* findEntry(JsonValue& value, JsonEntryCallback&& callback) {
+		for (JsonIterator entry = value.MemberBegin(); entry != value.MemberEnd(); entry++)
+			if (invoke(callback, entry->name, entry->value)) return &entry;
+		return nullptr;
 	}
 
 	class DefSourceError : public error {
