@@ -1,11 +1,10 @@
-#ifndef ESPER_PLUGIN_SLOT_H_
-#define ESPER_PLUGIN_SLOT_H_
-
+#pragma once
 #include <cstdint>
 #include "../helpers/errors.h"
-#include "../elements/PluginFile.h"
 
 namespace esper {
+	class PluginFile;
+
 	class PluginSlot {
 	public:
 		PluginSlot(PluginFile* plugin);
@@ -35,5 +34,3 @@ namespace esper {
 		uint16_t index;
 	};
 }
-
-#endif

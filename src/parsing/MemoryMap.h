@@ -1,15 +1,17 @@
-#ifndef ESPER_MEMORY_MAP_H_
-#define ESPER_MEMORY_MAP_H_
+#pragma once
 
 #include "fileapi.h"
 #include "memoryapi.h"
 #include <vector>
 #include <cstdint>
 #include <exception>
+#include <functional>
 #include <string>
 #include "../helpers/errors.h"
 
 namespace esper {
+	using ReadCallback = std::function<void()>;
+
 	using namespace std;
 
 	class MemoryMap {
@@ -25,7 +27,7 @@ namespace esper {
 				0
 			);
 			if (fileHandle == NULL) {
-				string err = "Error creating file handle:\n" + GetLastErrorAsString();
+				string err = "Error creating file handle:\n" + GetWindowsError();
 				throw error(err.c_str());
 			}
 
@@ -38,7 +40,7 @@ namespace esper {
 				NULL
 			);
 			if (mapHandle == NULL) {
-				string err = "Error creating map handle:\n" + GetLastErrorAsString();
+				string err = "Error creating map handle:\n" + GetWindowsError();
 				throw error(err.c_str());
 			}
 
@@ -51,7 +53,7 @@ namespace esper {
 				NULL
 			);
 			if (viewPtr == NULL) {
-				string err = "Error creating view pointer:\n" + GetLastErrorAsString();
+				string err = "Error creating view pointer:\n" + GetWindowsError();
 				throw error(err.c_str());
 			}
 
@@ -96,6 +98,12 @@ namespace esper {
 			return memcmp(dataPtr, bytes, size) == 0;
 		}
 
+		void readMultiple(uint32_t size, ReadCallback&& callback) {
+			const uint8_t* dataEndPtr = dataPtr + size;
+			while (dataPtr < dataEndPtr)
+				invoke(callback);
+		}
+
 	protected:
 		DWORD fileSize = 0;
 		HANDLE fileHandle = nullptr;
@@ -106,5 +114,3 @@ namespace esper {
 		uint8_t* endPtr = nullptr;
 	};
 }
-
-#endif

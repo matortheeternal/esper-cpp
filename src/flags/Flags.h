@@ -1,6 +1,4 @@
-#ifndef ESPER_FLAGS_H_
-#define ESPER_FLAGS_H_
-
+#pragma once
 namespace esper {
     template<typename T>
     class Flags {
@@ -24,5 +22,3 @@ namespace esper {
         T value = 0;
     };
 }
-
-#endif

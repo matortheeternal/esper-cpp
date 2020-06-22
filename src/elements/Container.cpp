@@ -2,7 +2,7 @@
 #include "../defs/Def.h"
 
 namespace esper {
-	void Container::initElements(const size_t targetSize = 0) {
+	void Container::initElements(const size_t targetSize) {
 		elements = new vector<Element*>(targetSize);
 	}
 

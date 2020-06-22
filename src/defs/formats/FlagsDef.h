@@ -14,7 +14,7 @@ namespace esper {
 		};
 
 		string getFlagValue(uint8_t index) {
-			JsonValue& flags = getFlags();
+			JsonValue& flags = src["flags"];
 			string key = formatInt(index, 10);
 			if (propertyIsUndefined(flags, key))
 				return "Unknown " + index;
@@ -22,9 +22,9 @@ namespace esper {
 		};
 
 		uint8_t getFlagIndex(string flag) {
-			JsonValue& flags = getFlags();
+			JsonValue& flags = src["flags"];
 			uint8_t index;
-			JsonIterator* entry = findEntry(flags, [&](auto& name, auto& value) {
+			auto* entry = findEntry(flags, [&](auto& name, auto& value) {
 				return value.GetString() == flag;
 			});
 			if (entry != nullptr) {
@@ -47,15 +47,27 @@ namespace esper {
 		};
 
 		string dataToValue(Element* element, DataContainer* data) {
-			// ?
+			return join(dataToArray(element, data), ", ");
 		};
 
-		DataContainer* valueToData(Element* element, string value) {
-
+		DataContainer* valueToData(string value) {
+			if (value == "") return 0;
+			T data = 0;
+			vector<string>* flags = split(value, ", ");
+			for (string& flag : *flags)
+				data += getFlagIndex(flag);
+			return new UserIntData<T>(data);
 		};
 
 		JsonValue& getFlags() {
 			return src["flags"];
 		};
-	}
+	};
+
+	using UInt32FlagsDef = FlagsDef<uint32_t>;
+	using UInt16FlagsDef = FlagsDef<uint16_t>;
+	using UInt8FlagsDef = FlagsDef<uint8_t>;
+	using Int32FlagsDef = FlagsDef<int32_t>;
+	using Int16FlagsDef = FlagsDef<int16_t>;
+	using Int8FlagsDef = FlagsDef<int8_t>;
 }

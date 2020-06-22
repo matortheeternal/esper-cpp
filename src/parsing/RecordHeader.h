@@ -1,6 +1,4 @@
-#ifndef ESPER_RECORD_HEADER_H_
-#define ESPER_RECORD_HEADER_H_
-
+#pragma once
 #include "windows.h"
 #include <cstdint>
 #include "Signature.h"
@@ -16,5 +14,3 @@ namespace esper {
 		uint8_t versionControl2[2];
 	};
 }
-
-#endif

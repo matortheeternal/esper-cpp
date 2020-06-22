@@ -7,6 +7,10 @@ namespace esper {
 		Int0Def(DefinitionManager* manager, JsonValue& src, void* parent)
 			: ValueDef(manager, src, parent) {}
 
+		string getDefType() {
+			return "int0";
+		}
+
 		DataContainer* loadData(uint8_t* dataPtr);
 		void setValue(ValueElement* element, string value) {};
 

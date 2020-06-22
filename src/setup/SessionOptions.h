@@ -1,6 +1,4 @@
-#ifndef ESPER_SESSION_OPTIONS_H_
-#define ESPER_SESSION_OPTIONS_H_
-
+#pragma once
 namespace esper {
 	struct SessionOptions {
 		bool keepMasterElementsUpdated = false;
@@ -8,5 +6,3 @@ namespace esper {
 		bool emulateGlobalLoadOrder = true;
 	};
 }
-
-#endif

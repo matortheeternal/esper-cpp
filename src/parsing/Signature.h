@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../helpers/errors.h"
+#include "../helpers/strings.h"
 #include "../helpers/json.h"
 
 namespace esper {
@@ -28,10 +29,16 @@ namespace esper {
 
 	class UnexpectedSignatureError : public error {
 	public:
-		UnexpectedSignatureError(Signature* found, Signature* expected)
+		UnexpectedSignatureError(string found, string expected)
 			: error(
-				"Expected record signature " + string(expected->data) +
-				", found: " + string(found->data)
+				"Expected record signature " + expected +
+				", found: " + found
+			) {}
+
+		UnexpectedSignatureError(string found, vector<string>* expectedSigs)
+			: error(
+				"Expected record signature to be one of [" + 
+				join(expectedSigs, ", ") + "], found: " + found
 			) {}
 	};
 }

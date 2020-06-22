@@ -1,5 +1,4 @@
-#ifndef ESPER_MAYBESUBRECORDDEF_H
-#define ESPER_MAYBESUBRECORDDEF_H
+#pragma once
 
 #include "Def.h"
 #include "../parsing/Signature.h"
@@ -12,6 +11,12 @@ namespace esper {
 			signature = Signature::fromJson(src);
 		}
 
+		void subrecordFound(Element* element, Subrecord* subrecord) {
+			if (subrecord->signature != signature)
+				throw new error("subrecord signature mismatch");
+			dataFound(element, subrecord->getData(), subrecord->getEnd());
+		}
+
 		bool isSubrecord() {
 			return signature != nullptr;
 		}
@@ -20,15 +25,18 @@ namespace esper {
 			return isSubrecord() && this->signature == signature;
 		}
 
+		string getSignature() {
+			if (!isSubrecord()) return "";
+			return string(signature->data);
+		}
+
 		string getName() {
-			string name = (*src)["name"].GetString();
+			string name = src["name"].GetString();
 			return isSubrecord()
-				? string(signature->data) + " - " + name
+				? getSignature() + " - " + name
 				: name;
 		}
 
 		Signature* signature;
 	};
 }
-
-#endif

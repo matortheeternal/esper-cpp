@@ -6,7 +6,7 @@
 namespace esper {
 	class Subrecord {
 	public:
-		static size_t baseSize;
+		inline static size_t baseSize = 6;
 
 		size_t totalSize() {
 			return Subrecord::baseSize + size;
@@ -23,6 +23,4 @@ namespace esper {
 		Signature signature;
 		uint16_t size;
 	};
-
-	size_t Subrecord::baseSize = 6;
 }

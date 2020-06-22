@@ -1,15 +1,30 @@
 #include "MainRecord.h"
 #include "../helpers/errors.h"
 #include "../defs/MainRecordDef.h"
-#include "../parsing/Signature.h"
 #include "PluginFile.h"
+#include "../parsing/Signature.h"
 
 namespace esper {
-	MainRecord* MainRecord::load(Container* container, Signature* expectedSig = nullptr) {
+	MainRecord* MainRecord::build(Container* container, string expectedSig) {
 		MainRecord* record = new MainRecord(container);
 		record->loadHeader();
-		if (expectedSig != nullptr && record->header->signature != *expectedSig)
-			throw UnexpectedSignatureError(&record->header->signature, expectedSig);
+		if (expectedSig != "" && record->header->signature.data != expectedSig)
+			throw UnexpectedSignatureError(record->header->signature.data, expectedSig);
+		record->loadSubrecords();
+		return record;
+	}
+
+	MainRecord* MainRecord::build(Container* container, vector<string>* expectedSigs) {
+		MainRecord* record = new MainRecord(container);
+		record->loadHeader();
+		string recordSig = record->header->signature.data;
+		bool foundSig = false;
+		for (string& sig : *expectedSigs) {
+			foundSig = recordSig == sig;
+			if (foundSig) break;
+		}
+		if (!foundSig)
+			throw UnexpectedSignatureError(recordSig, expectedSigs);
 		record->loadSubrecords();
 		return record;
 	}
@@ -32,10 +47,7 @@ namespace esper {
 		initElements(mrDef->memberDefs->size());
 		for (auto i = 0; i < subrecords->size(); i++) {
 			Subrecord* subrecord = (*subrecords)[i];
-			Def* memberDef = mrDef->getMemberDef(subrecord->signature);
-			if (memberDef == nullptr) return; // TODO
-			Element* element = memberDef->build(this);
-			def->subrecordFound(element, subrecord);
+			mrDef->subrecordFound(this, subrecord);
 		}
 	}
 
@@ -48,7 +60,6 @@ namespace esper {
 	bool MainRecord::ordered() {
 		return true;
 	}
-
 
 	void MainRecord::loadHeader() {
 		header = file->source->readRecordHeader();

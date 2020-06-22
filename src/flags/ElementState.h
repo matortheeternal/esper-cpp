@@ -1,6 +1,4 @@
-#ifndef ESPER_ELEMENT_STATE_H_
-#define ESPER_ELEMENT_STATE_H_
-
+#pragma once
 #include <cstdint>
 #include "Flags.h"
 
@@ -11,5 +9,3 @@ namespace esper {
         static constexpr uint8_t filterShow = 0x02;
     };
 }
-
-#endif

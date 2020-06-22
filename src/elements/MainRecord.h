@@ -9,7 +9,8 @@ namespace esper {
 		MainRecord(Container* container, Def* def = nullptr)
 			: Container(container, def) {}
 
-		static MainRecord* load(Container* container, Signature* expectedSig = nullptr);
+		static MainRecord* build(Container* container, string expectedSig = "");
+		static MainRecord* build(Container* container, vector<string>* expectedSigs);
 		vector<Subrecord*>* getUnknownSubrecords();
 		void buildElements();
 		void releaseElements();

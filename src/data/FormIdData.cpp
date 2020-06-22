@@ -4,7 +4,7 @@
 
 namespace esper {
 	uint32_t FormIdData::toGlobalFormId() {
-		// TODO
+		return 0; // TODO
 	}
 
 	string FormIdData::toString() {
@@ -16,6 +16,6 @@ namespace esper {
 	}
 
 	MainRecord* FormIdData::resolveRecord() {
-		return file->getRecordByFormId(this);
+		return file->getRecordByLocalFormId(getLocalFormId());
 	}
 }

@@ -8,8 +8,12 @@ namespace esper {
 
 	class FloatDef : public ValueDef {
 	public:
-		FloatDef(DefinitionManager* manager, JsonValue& src, Def* parent)
+		FloatDef(DefinitionManager* manager, JsonValue& src, void* parent)
 			: ValueDef(manager, src, parent) {}
+
+		string getDefType() {
+			return "float";
+		}
 
 		DataContainer* loadData(uint8_t* dataPtr);
 		void setValue(ValueElement* element, string value);

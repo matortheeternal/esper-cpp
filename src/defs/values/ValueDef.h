@@ -15,10 +15,7 @@ namespace esper {
 		ValueDef(DefinitionManager* manager, JsonValue& src, void* parent)
 			: MaybeSubrecordDef(manager, src, parent) {}
 
-		MainRecord* getReferencedRecord(Element* element) {
-			throw error(element->getName() + " does not reference records.");
-		};
-
+		MainRecord* getReferencedRecord(Element* element);
 		Element* build(Container* container);
 		uint8_t* dataFound(Element* element, uint8_t* dataPtr, uint8_t* endPtr);
 		virtual DataContainer* loadData(uint8_t* dataPtr) = 0;

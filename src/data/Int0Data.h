@@ -1,6 +1,4 @@
-#ifndef ESPER_INT0_DATA_H_
-#define ESPER_INT0_DATA_H_
-
+#pragma once
 #include "DataContainer.h"
 
 namespace esper {
@@ -13,5 +11,3 @@ namespace esper {
 		}
 	};
 }
-
-#endif

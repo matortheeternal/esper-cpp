@@ -1,6 +1,4 @@
-#ifndef ESPER_ERRORS_H_
-#define ESPER_ERRORS_H_
-
+#pragma once
 #include "windows.h"
 #include <stdexcept>
 #include <string>
@@ -9,7 +7,7 @@ namespace esper {
 	using namespace std;
 	using error = runtime_error;
 
-	wstring GetLastErrorAsStringW() {
+	inline wstring GetWindowsErrorW() {
 		DWORD errorMessageID = ::GetLastError();
 		if (errorMessageID == 0)
 			return L"Unknown Error";
@@ -24,7 +22,7 @@ namespace esper {
 		return message;
 	}
 
-	string GetLastErrorAsString() {
+	inline string GetWindowsError() {
 		DWORD errorMessageID = ::GetLastError();
 		if (errorMessageID == 0)
 			return "Unknown Error";
@@ -39,5 +37,3 @@ namespace esper {
 		return message;
 	}
 }
-
-#endif

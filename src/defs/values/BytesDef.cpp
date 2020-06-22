@@ -14,6 +14,4 @@ namespace esper {
 	void BytesDef::setValue(ValueElement* element, string value) {
 		element->setData(new UserBytesData(value));
 	}
-
-	string BytesDef::defType = "bytes";
 }

@@ -1,4 +1,5 @@
 #include "./PluginSlot.h"
+#include "../elements/PluginFile.h"
 
 namespace esper {
 	PluginSlot::PluginSlot(PluginFile* plugin) : plugin(plugin) {

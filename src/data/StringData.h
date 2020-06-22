@@ -1,6 +1,4 @@
-#ifndef ESPER_STRING_DATA_H_
-#define ESPER_STRING_DATA_H_
-
+#pragma once
 #include <cstdint>
 #include "DataContainer.h"
 
@@ -27,5 +25,3 @@ namespace esper {
 		size_t size = 0;
 	};
 }
-
-#endif

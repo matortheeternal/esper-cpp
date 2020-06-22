@@ -11,6 +11,4 @@ namespace esper {
 	void FloatDef::setValue(ValueElement* element, string value) {
 		element->setData(new UserFloatData(value));
 	}
-
-	string FloatDef::defType = "float";
 }

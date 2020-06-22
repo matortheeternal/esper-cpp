@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <list>
 #include <functional>
+#include <optional>
 #include "stringbuffer.h"
 #include "writer.h"
 #include "filereadstream.h"
@@ -12,11 +13,12 @@ namespace esper {
 	using JsonValue = rapidjson::Value;
 	using JsonDocument = rapidjson::Document;
 	using JsonIterator = rapidjson::Value::ConstMemberIterator;
-	using JsonEntryCallback = std::function<bool(const JsonValue&, const JsonValue&)>;
+	using FindEntryCallback = std::function<bool(const JsonValue&, const JsonValue&)>;
+	using EachEntryCallback = std::function<void(const JsonValue&, const JsonValue&)>;
 
 	using namespace std;
 
-	JsonDocument* readJsonFile(string filePath) {
+	inline JsonDocument* readJsonFile(string filePath) {
 		FILE* fp = fopen(filePath.c_str(), "rb");
 		char* readBuffer = new char[65536];
 		rapidjson::FileReadStream fileStream(fp, readBuffer, 65536);
@@ -29,7 +31,7 @@ namespace esper {
 		return &doc;
 	};
 
-	JsonValue* objectAssign(JsonValue* target, const vector<JsonValue*>& sources, JsonDocument::AllocatorType& allocator) {
+	inline JsonValue* objectAssign(JsonValue* target, const vector<JsonValue*>& sources, JsonDocument::AllocatorType& allocator) {
 		for (size_t i = 0; i < sources.size(); i++) {
 			JsonValue* source = sources[i];
 			for (auto it = source->MemberBegin(); it != source->MemberEnd(); it++) {
@@ -43,25 +45,31 @@ namespace esper {
 		return target;
 	}
 
-	string stringify(JsonValue& data) {
+	inline string stringify(JsonValue& data) {
 		rapidjson::StringBuffer sb;
 		rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
 		data.Accept(writer);
 		return sb.GetString();
 	}
 
-	bool propertyIsUndefined(JsonValue& src, string key) {
+	inline bool propertyIsUndefined(JsonValue& src, string key) {
 		return !src.HasMember(key.c_str()) || src[key].IsNull();
 	}
 
-	bool propertyIsPositiveIntOrZero(JsonValue* value, string key) {
+	inline bool propertyIsPositiveIntOrZero(JsonValue* value, string key) {
 		return (*value)[key].IsInt() && (*value)[key].GetInt() >= 0;
 	}
 
-	JsonIterator* findEntry(JsonValue& value, JsonEntryCallback&& callback) {
+	inline optional<JsonIterator> findEntry(JsonValue& value, FindEntryCallback&& callback) {
 		for (JsonIterator entry = value.MemberBegin(); entry != value.MemberEnd(); entry++)
-			if (invoke(callback, entry->name, entry->value)) return &entry;
-		return nullptr;
+			if (invoke(callback, entry->name, entry->value)) 
+				return optional<JsonIterator>(entry);
+		return nullopt;
+	}
+
+	inline void forEachEntry(JsonDocument* doc, EachEntryCallback callback) {
+		for (JsonIterator entry = doc->MemberBegin(); entry != doc->MemberEnd(); entry++)
+			invoke(callback, entry->name, entry->value);
 	}
 
 	class DefSourceError : public error {

@@ -27,12 +27,12 @@ namespace esper {
 		bool hasMaster(PluginFile* file);
 		void addMaster(PluginFile* file);
 		void removeMaster(PluginFile* file);
-		ReferenceMap getMasterReferences();
-		ReferenceCountMap countMasterReferences();
-		vector<string> getUnusedMasters();
+		ReferenceMap* getMasterReferences();
+		ReferenceCountMap* countMasterReferences();
+		vector<string>* getUnusedMasters();
 		void removeUnusedMasters();
 		vector<PluginFile*> getMasters();
-		vector<string> getMasterFilenames();
+		vector<wstring>* getMasterFilenames();
 		virtual PluginFile* getFile() = 0;
 
 		FileList* masters = new FileList();

@@ -1,6 +1,4 @@
-#ifndef ESPER_BYTES_DATA_H_
-#define ESPER_BYTES_DATA_H_
-
+#pragma once
 #include "DataContainer.h"
 #include "../helpers/strings.h"
 
@@ -27,8 +25,6 @@ namespace esper {
 			return formatBytes(dataPtr, size);
 		}
 
-		size_t size;
+		size_t size = 0;
 	};
 }
-
-#endif

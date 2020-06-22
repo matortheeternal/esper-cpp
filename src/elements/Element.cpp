@@ -2,6 +2,7 @@
 #include "Element.h"
 #include "Container.h"
 #include "PluginFile.h"
+#include "../defs/MaybeSubrecordDef.h"
 
 namespace esper {
 	Element::Element(Container* container, Def* def) {
@@ -14,6 +15,12 @@ namespace esper {
 
 	string Element::getName() {
 		return def->getName();
+	}
+
+	string Element::getSignature() {
+		MaybeSubrecordDef* d = dynamic_cast<MaybeSubrecordDef*>(this->def);
+		if (d == nullptr || !d->isSubrecord()) return "";
+		return string(d->signature->data);
 	}
 
 	string Element::getPathName() {

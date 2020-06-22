@@ -19,4 +19,12 @@ namespace esper {
 			free(dataPtr);
 		}
 	};
+
+
+	using UserUInt8 = UserIntData<uint8_t>;
+	using UserUInt16 = UserIntData<uint16_t>;
+	using UserUInt32 = UserIntData<uint32_t>;
+	using UserInt8 = UserIntData<int8_t>;
+	using UserInt16 = UserIntData<int16_t>;
+	using UserInt32 = UserIntData<int32_t>;
 }

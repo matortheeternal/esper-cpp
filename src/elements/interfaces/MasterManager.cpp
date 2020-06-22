@@ -59,7 +59,7 @@ namespace esper {
 		auto end = remove_if(
 			userMasters->begin(), 
 			userMasters->end(), 
-			[](auto& plugin) {
+			[&](auto& plugin) {
 				return plugin == file;
 			}
 		);
@@ -67,16 +67,19 @@ namespace esper {
 		userMasters->erase(end, userMasters->end());
 	};
 
-	ReferenceMap MasterManager::getMasterReferences() {
+	ReferenceMap* MasterManager::getMasterReferences() {
 		// TODO
+		return nullptr;
 	};
 
-	ReferenceCountMap MasterManager::countMasterReferences() {
+	ReferenceCountMap* MasterManager::countMasterReferences() {
 		// TODO
+		return nullptr;
 	};
 
-	vector<string> MasterManager::getUnusedMasters() {
+	vector<string>* MasterManager::getUnusedMasters() {
 		// TODO
+		return nullptr;
 	};
 
 	void MasterManager::removeUnusedMasters() {
@@ -87,10 +90,10 @@ namespace esper {
 		return vector<PluginFile*>(*userMasters);
 	};
 
-	vector<string> MasterManager::getMasterFilenames() {
-		vector<string>* filenames = new vector<string>();
+	vector<wstring>* MasterManager::getMasterFilenames() {
+		vector<wstring>* filenames = new vector<wstring>();
 		for (auto& plugin : *userMasters)
-			filenames->push_back(wstringToString(plugin->filename));
-		return *filenames;
+			filenames->push_back(plugin->filename);
+		return filenames;
 	};
 }

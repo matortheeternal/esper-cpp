@@ -11,9 +11,13 @@ namespace esper {
 	public:
 		BytesDef(DefinitionManager* manager, JsonValue& src, void* parent)
 			: ValueDef(manager, src, parent) {
-			if (propertyIsUndefined(src, "size")) (*src)["size"].SetInt(0);
-			if (!propertyIsPositiveIntOrZero(src, "size"))
+			if (propertyIsUndefined(src, "size")) src["size"].SetInt(0);
+			if (!propertyIsPositiveIntOrZero(&src, "size"))
 				throw DefSourceError("Def source has invalid size: ", src);
+		}
+
+		string getDefType() {
+			return "bytes";
 		}
 
 		DataContainer* loadData(uint8_t* dataPtr);

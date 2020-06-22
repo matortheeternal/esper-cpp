@@ -25,10 +25,10 @@ namespace esper {
 
 		DataContainer* valueToData(Element* element, string value) {
 			JsonValue& opts = getOptions();
-			auto* entry = findEntry(opts, [&](auto& name, auto& value) {
+			auto entry = findEntry(opts, [&](auto& name, auto& value) {
 				return name.GetString() == value;
 			});
-			if (entry != nullptr) {
+			if (entry) {
 				string indexValue = (*entry)->value.GetString();
 				return new UserIntData<T>(indexValue);
 			}
@@ -42,4 +42,11 @@ namespace esper {
 			return src["options"];
 		};
 	};
+
+	using UInt32EnumDef = EnumDef<uint32_t>;
+	using UInt16EnumDef = EnumDef<uint16_t>;
+	using UInt8EnumDef = EnumDef<uint8_t>;
+	using Int32EnumDef = EnumDef<int32_t>;
+	using Int16EnumDef = EnumDef<int16_t>;
+	using Int8EnumDef = EnumDef<int8_t>;
 }

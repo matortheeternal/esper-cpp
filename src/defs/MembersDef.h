@@ -22,6 +22,14 @@ namespace esper {
 			return nullptr;
 		}
 
+		void subrecordFound(Element* element, Subrecord* subrecord) {
+			Def* memberDef = getMemberDef(subrecord->signature);
+			if (memberDef == nullptr) return; // TODO
+			Container* container = reinterpret_cast<Container*>(element);
+			Element* memberElement = memberDef->buildElement(container);
+			memberDef->subrecordFound(memberElement, subrecord);
+		}
+
 		bool hasMemberDef(const Signature& signature) {
 			return getMemberDef(signature) != nullptr;
 		}

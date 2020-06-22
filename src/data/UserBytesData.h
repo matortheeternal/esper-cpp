@@ -4,7 +4,7 @@
 namespace esper {
 	class UserBytesData : public BytesData {
 	public:
-		UserBytesData(const string& value) {
+		UserBytesData(const string& value) : BytesData() {
 			parseBytes(value, dataPtr, size);
 		}
 

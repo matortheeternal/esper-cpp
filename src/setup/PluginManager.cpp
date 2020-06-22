@@ -1,4 +1,6 @@
 #include "PluginManager.h"
+#include "Session.h"
+#include "../elements/PluginFile.h"
 
 namespace esper {
 	PluginManager::PluginManager(Game& game, Session* session)
@@ -48,9 +50,7 @@ namespace esper {
 	}
 
 	PluginFile* PluginManager::createDummyPlugin(wstring filename) {
-		PluginFile* dummyPlugin = new PluginFile(session, filename);
-		addFile(dummyPlugin);
-		return dummyPlugin;
+		return new PluginFile(session, filename);
 	}
 
 	PluginFile* PluginManager::getFileByName(wstring filename, bool createDummyIfMissing) {
@@ -58,5 +58,15 @@ namespace esper {
 			if (wstrEquals(filename, plugin->filename)) return plugin;
 		if (!createDummyIfMissing) return nullptr;
 		return createDummyPlugin(filename);
+	}
+
+	vector<wstring>* PluginManager::getMasterFilenames(wstring filePath) {
+		PluginFileOptions options = { true };
+		PluginFile* plugin = new PluginFile(session, filePath, options);
+		plugin->source = new PluginFileSource(filePath);
+		plugin->loadFileHeader();
+		vector<wstring>* masterFilenames = plugin->getMasterFilenames();
+		delete plugin;
+		return masterFilenames;
 	}
 }

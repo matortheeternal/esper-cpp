@@ -1,7 +1,6 @@
-#ifndef ESPER_GAME_H_
-#define ESPER_GAME_H_
-
+#pragma once
 #include <cstdint>
+#include <string>
 #include <vector>
 
 namespace esper {
@@ -14,7 +13,7 @@ namespace esper {
 			FO3 = 2,
 			FNV = 3,
 			TES5 = 4,
-		    F76 = 5,
+			F76 = 5,
 			FO4 = 6,
 			SSE = 7
 		};
@@ -22,7 +21,8 @@ namespace esper {
 		bool supportsLightPlugins() {
 			for (auto i = 0; i < pluginExtensions.size(); i++)
 				if (pluginExtensions[i] == ".esl") return true;
-		}
+			return false;
+		};
 
 		GameId id;
 		string name;
@@ -42,5 +42,3 @@ namespace esper {
 		vector<uint32_t> steamAppIds;
 	};
 }
-
-#endif

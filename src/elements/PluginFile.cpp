@@ -1,50 +1,36 @@
 #include "PluginFile.h"
+#include "GroupRecord.h"
 
 namespace esper {
-	PluginFile::PluginFile(Session* session, wstring filename)
-		: Container(nullptr, nullptr) {
-		this->session = session;
-		this->filePath = L"";
-		this->filename = filename;
+	PluginFile::PluginFile(Session* session, wstring filename, PluginFileOptions options)
+		: Container(nullptr, nullptr), MasterManager(), RecordManager(),
+		session(session), 
+		filename(filename), 
+		options(options),
+		filePath(L"") 
+	{
 		this->file = this;
-		this->options = PluginFileOptions();
-	}
-
-	PluginFile::PluginFile(Session* session, wstring filePath, PluginFileOptions options) :
-		Container(nullptr, nullptr) {
-		this->session = session;
-		this->filePath = filePath;
-		this->filename = getFileName(filePath);
-		this->file = this;
-		this->options = options;
 		if (!options.temporary) session->pluginManager->addFile(this);
 	}
 
-	PluginFile* PluginFile::load(Session* session, wstring filePath, PluginFileOptions options) {
+	void PluginFile::load(wstring filePath) {
 		assertFileExists(filePath);
-		PluginFile* plugin = new PluginFile(session, filePath, options);
-		plugin->source = new PluginFileSource(filePath);
-		plugin->loadFileHeader();
-		plugin->loadGroups();
-		return plugin;
-	}
-
-	wstring* PluginFile::getMasterFilenames(Session* session, wstring filePath) {
-		PluginFileOptions options = { true };
-		PluginFile* plugin = new PluginFile(session, filePath, options);
-		plugin->source = new PluginFileSource(filePath);
-		plugin->loadFileHeader();
-		wstring* masterFilenames = plugin->getMasterFilenames();
-		delete plugin;
-		return masterFilenames;
+		this->filePath = filePath;
+		source = new PluginFileSource(filePath);
+		loadFileHeader();
+		loadGroups();
 	}
 
 	void PluginFile::loadFileHeader() {
-
+		Def* fileHeaderDef = (Def*) session->definitionManager->getFileHeaderDef();
+		header = MainRecord::build(this, "TES4");
+		initMasters();
+		initMasterIndexes();
 	}
 
 	void PluginFile::loadGroups() {
-
+		while (source->match(GRUP_MARKER, 4))
+			GroupRecord::load(this, GroupType::Top);
 	}
 
 	bool PluginFile::isEsl() {
@@ -52,10 +38,10 @@ namespace esper {
 	}
 
 	bool PluginFile::isDummy() {
-		return filePath.length == 0;
+		return filePath.length() == 0;
 	}
 
 	PluginFile* PluginFile::getFile() {
-		return this->file;
+		return this;
 	}
 }

@@ -1,6 +1,4 @@
-#ifndef ESPER_GAMES_H_
-#define ESPER_GAMES_H_
-
+#pragma once
 #include "Game.h"
 #include <unordered_map>
 
@@ -145,5 +143,3 @@ namespace esper {
 		{SkyrimSE.id, SkyrimSE}
 	};
 }
-
-#endif

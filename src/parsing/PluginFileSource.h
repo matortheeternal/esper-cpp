@@ -1,5 +1,4 @@
-#ifndef ESPER_PLUGIN_FILE_SOURCE_H_
-#define ESPER_PLUGIN_FILE_SOURCE_H_
+#pragma once
 
 #include "../helpers/errors.h"
 #include "MemoryMap.h"
@@ -40,5 +39,3 @@ namespace esper {
 		}
 	};
 }
-
-#endif

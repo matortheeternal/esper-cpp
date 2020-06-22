@@ -1,16 +1,8 @@
-#ifndef ESPER_DATA_CONTAINER_H_
-#define ESPER_DATA_CONTAINER_H_
-
+#pragma once
 #include <string>
 
 namespace esper {
 	using namespace std;
-
-	template<typename Type> string to_str(const Type& t) {
-		ostringstream o;
-		o << t;
-		return o.str();
-	}
 
 	class DataContainer {
 	public:
@@ -24,5 +16,3 @@ namespace esper {
 		uint8_t* dataPtr = nullptr;
 	};
 }
-
-#endif

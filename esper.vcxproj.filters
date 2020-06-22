@@ -37,6 +37,9 @@
     <Filter Include="defs\formats">
       <UniqueIdentifier>{1306374b-2648-4908-80a8-c94d4321101e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="elements\helpers">
+      <UniqueIdentifier>{7465abeb-a6d7-4cee-af9c-a455e4adcf98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\data\BytesData.h">
@@ -102,9 +105,6 @@
     <ClInclude Include="src\helpers\filesystem.h">
       <Filter>helpers</Filter>
     </ClInclude>
-    <ClInclude Include="src\helpers\helpers.h">
-      <Filter>helpers</Filter>
-    </ClInclude>
     <ClInclude Include="src\helpers\json.h">
       <Filter>helpers</Filter>
     </ClInclude>
@@ -127,9 +127,6 @@
       <Filter>parsing</Filter>
     </ClInclude>
     <ClInclude Include="src\parsing\Subrecord.h">
-      <Filter>parsing</Filter>
-    </ClInclude>
-    <ClInclude Include="src\parsing\VariantData.h">
       <Filter>parsing</Filter>
     </ClInclude>
     <ClInclude Include="src\setup\DefinitionManager.h">
@@ -208,12 +205,6 @@
     <ClInclude Include="src\resolution\strategies\resolveByIndex.h">
       <Filter>resolution\strategies</Filter>
     </ClInclude>
-    <ClInclude Include="src\resolution\strategies\resolveByName.h">
-      <Filter>resolution\strategies</Filter>
-    </ClInclude>
-    <ClInclude Include="src\resolution\strategies\resolveBySignature.h">
-      <Filter>resolution\strategies</Filter>
-    </ClInclude>
     <ClInclude Include="src\resolution\strategies\resolveParent.h">
       <Filter>resolution\strategies</Filter>
     </ClInclude>
@@ -259,6 +250,24 @@
     <ClInclude Include="src\defs\UnionDef.h">
       <Filter>defs</Filter>
     </ClInclude>
+    <ClInclude Include="src\elements\interfaces\RecordManager.h">
+      <Filter>elements\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\helpers\RecordSet.h">
+      <Filter>elements\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\ArrayElement.h">
+      <Filter>elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elements\GroupRecord.h">
+      <Filter>elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveByName.cpp">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resolution\strategies\resolveBySignature.cpp">
+      <Filter>resolution\strategies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\defs\Def.cpp">
@@ -294,7 +303,6 @@
     <ClCompile Include="src\elements\ValueElement.cpp">
       <Filter>elements</Filter>
     </ClCompile>
-    <ClCompile Include="src\empty_file.cpp" />
     <ClCompile Include="src\defs\values\BytesDef.cpp">
       <Filter>defs\values</Filter>
     </ClCompile>
@@ -322,9 +330,6 @@
     <ClCompile Include="src\elements\interfaces\MasterManager.cpp">
       <Filter>elements\interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="src\resolution\ResolutionStrategy.cpp">
-      <Filter>resolution</Filter>
-    </ClCompile>
     <ClCompile Include="src\resolution\methods.cpp">
       <Filter>resolution</Filter>
     </ClCompile>
@@ -349,14 +354,24 @@
     <ClCompile Include="src\defs\UnionDef.cpp">
       <Filter>defs</Filter>
     </ClCompile>
-    <ClCompile Include="src\defs\formats\FormatDef.cpp">
-      <Filter>defs\formats</Filter>
-    </ClCompile>
-    <ClCompile Include="src\defs\formats\EnumDef.cpp">
-      <Filter>defs\formats</Filter>
-    </ClCompile>
     <ClCompile Include="src\data\UserFormIdData.cpp">
       <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\interfaces\RecordManager.cpp">
+      <Filter>elements\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\helpers\RecordSet.cpp">
+      <Filter>elements\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\ArrayElement.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\elements\GroupRecord.cpp">
+      <Filter>elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\esper.cpp" />
+    <ClCompile Include="src\resolution\ResolutionStrategy.cpp">
+      <Filter>resolution</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

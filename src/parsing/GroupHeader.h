@@ -1,6 +1,4 @@
-#ifndef ESPER_GROUP_HEADER_H_
-#define ESPER_GROUP_HEADER_H_
-
+#pragma once
 #include <cstdint>
 #include "signature.h"
 
@@ -14,5 +12,3 @@ namespace esper {
 		uint32_t unknown;
 	};
 }
-
-#endif

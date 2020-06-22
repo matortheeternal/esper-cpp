@@ -28,6 +28,6 @@ namespace esper {
 		string toString();
 		MainRecord* resolveRecord();
 
-		PluginFile* file;
+		PluginFile* file = nullptr;
 	};
 }

@@ -3,6 +3,8 @@
 #include "../flags/ElementState.h"
 
 namespace esper {
+	using namespace std;
+
 	class Def;
 	class Container;
 	class PluginFile;
@@ -11,6 +13,7 @@ namespace esper {
 	public:
 		Element() {}
 		Element(Container* container, Def* def);
+		virtual string getSignature();
 		virtual string getName();
 		virtual string getPathName();
 		virtual string getPath();

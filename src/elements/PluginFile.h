@@ -4,10 +4,12 @@
 #include <string>
 #include "../parsing/PluginFileSource.h"
 #include "../setup/Session.h"
+#include "../setup/PluginSlot.h"
 #include "../helpers/filesystem.h"
 #include "Container.h"
 #include "MainRecord.h"
 #include "./interfaces/MasterManager.h"
+#include "./interfaces/RecordManager.h"
 
 namespace esper {
 	using namespace std;
@@ -16,27 +18,27 @@ namespace esper {
 		bool temporary;
 	};
 
-	class PluginFile : public Container, public MasterManager {
+	class PluginFile : public Container, public MasterManager, public RecordManager {
 	public:
-		PluginFile(Session* session, wstring filename);
+		PluginFile(
+			Session* session, 
+			wstring filename, 
+			PluginFileOptions options = PluginFileOptions()
+		);
 
-		PluginFile(Session* session, wstring filePath, PluginFileOptions options);
-
-		static PluginFile* load(Session* session, wstring filePath, PluginFileOptions options);
-		static wstring* getMasterFilenames(Session* session, wstring filePath);
-		
+		void load(wstring filePath);
 		void loadFileHeader();
 		void loadGroups();
 		bool isEsl();
 		bool isDummy();
 		PluginFile* getFile();
 
-		MainRecord* header;
 		Session* session;
 		PluginFileOptions options;
-		wstring filePath;
 		wstring filename;
-		PluginFileSource* source;
-		PluginSlot* pluginSlot;
+		wstring filePath;
+		MainRecord* header = nullptr;
+		PluginFileSource* source = nullptr;
+		PluginSlot* pluginSlot = nullptr;
 	};
 }

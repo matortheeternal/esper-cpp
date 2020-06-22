@@ -1,5 +1,6 @@
 #pragma once
 #include "../Def.h"
+#include "../../elements/Element.h"
 #include "../../data/UserIntData.h"
 
 namespace esper {
@@ -9,7 +10,12 @@ namespace esper {
 		FormatDef(DefinitionManager* manager, JsonValue& src, Def* parent)
 			: Def(manager, src, parent) {};
 
-		virtual string dataToValue(Element* element, DataContainer* data);
-		virtual DataContainer* valueToData(Element* element, string value);
+		virtual string dataToValue(Element* element, DataContainer* data) {
+			return data->toString();
+		};
+
+		virtual DataContainer* valueToData(Element* element, string value) {
+			return new UserIntData<T>(value);
+		};
 	};
 }

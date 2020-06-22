@@ -6,8 +6,6 @@ namespace esper {
 	namespace PathResolution {
 		using namespace std;
 
-		class Container;
-
 		class ContainerMatch : public MatchData {
 		public:
 			ContainerMatch(Container* container, string pathPart)

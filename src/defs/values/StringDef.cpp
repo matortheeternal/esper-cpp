@@ -9,12 +9,10 @@ namespace esper {
 	}
 
 	size_t StringDef::getSize() {
-		return (*src)["size"].GetInt();
+		return src["size"].GetInt();
 	}
 
 	void StringDef::setValue(ValueElement* element, string value) {
 		element->setData(new UserStringData(value));
 	}
-
-	string StringDef::defType = "string";
 }

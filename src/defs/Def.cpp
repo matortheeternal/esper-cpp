@@ -13,28 +13,33 @@ namespace esper {
 		return false;
 	}
 
-	Element* Def::build(Container* container) {
-		throw error("unimplemented");
-	}
-
 	void Def::subrecordFound(Element* element, Subrecord* subrecord) {
-		dataFound(element, subrecord->getData(), subrecord->getEnd());
+		throw error("unimplemented");
 	}
 
 	uint8_t* Def::dataFound(Element* element, uint8_t* dataPtr, uint8_t* endPtr) {
 		throw error("unimplemented");
 	}
 
-	Element* Def::build(Container* container) {
+	Element* Def::buildElement(Container* container) {
 		throw error("unimplemented");
 	}
 
 	string Def::getName() {
-		return (*src)["name"].GetString();
+		return src["name"].GetString();
+	}
+
+	string Def::getDefType() {
+		throw error("unimplemented");
+	}
+
+	string Def::getSignature() {
+		if (propertyIsUndefined(src, "signature")) return "";
+		return src["signature"].GetString();
 	}
 
 	size_t Def::getSize() {
-		if (src->HasMember("size")) return (*src)["size"].GetUint();
+		if (src.HasMember("size")) return src["size"].GetUint();
 		return 0;
 	}
 }

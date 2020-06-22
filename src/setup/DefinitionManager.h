@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <functional>
 #include <unordered_map>
 #include "Game.h"
 #include "../helpers/errors.h"
@@ -12,36 +13,52 @@ namespace esper {
 
 	class DefinitionManager {
 	public:
-		typedef void* (*create_def_function)(
+		using CreateDefFunction = std::function<void* (
 			DefinitionManager* manager,
-			JsonValue* def,
+			JsonValue& def,
 			void* parent
-		);
+		)>;
 
 		using DefMap = unordered_map<string, void*>;
-		using DefFunctionMap = unordered_map<string, create_def_function>;
+		using DefFunctionMap = unordered_map<string, CreateDefFunction>;
+		using GameDefsMap = unordered_map<Game*, DefFunctionMap*>;
 
-		static DefFunctionMap allDefClasses;
-
-		DefFunctionMap getDefClasses(Game& game) {
-			// TODO
-		}
-
-		DefMap buildRecordDefs(DefinitionManager* manager) {
-			DefFunctionMap defClasses = manager->defClasses;
-			// TODO
-		}
+		inline static DefFunctionMap generalDefClasses = DefFunctionMap();
+		inline static GameDefsMap gameDefClasses = GameDefsMap();
 
 		DefinitionManager(Game& game) {
-			this->defs = readJsonFile("./defs/" + game.abbreviation + ".json");
-			this->defClasses = getDefClasses(game);
-			this->recordDefs = buildRecordDefs(this);
+			readDefs(game);
+			initDefClasses(game);
+			buildRecordDefs();
 		}
 
 		~DefinitionManager() {
-			delete defs;
-			delete& defClasses;
-			delete& recordDefs;
+			free(defs);
+			free(defClasses);
+			free(recordDefs);
+		}
+
+		void readDefs(Game& game) {
+			defs = readJsonFile("./defs/" + game.abbreviation + ".json");
+		}
+
+		void initDefClasses(Game& game) {
+			defClasses = new DefFunctionMap();
+			defClasses->insert(
+				generalDefClasses.begin(),
+				generalDefClasses.end()
+			);
+			defClasses->insert(
+				gameDefClasses[&game]->begin(),
+				gameDefClasses[&game]->end()
+			);
+		}
+
+		void buildRecordDefs() {
+			recordDefs = new DefMap();
+			forEachEntry(defs, [&](const JsonValue& name, const JsonValue& value) {
+				recordDefs->at(name.GetString()) = buildDef(value, nullptr);
+			});
 		}
 
 		JsonValue* resolveDef(string id) {
@@ -49,11 +66,12 @@ namespace esper {
 			return &(*defs)[id];
 		}
 
-		create_def_function resolveDefClass(string defType) {
-			return defClasses[defType];
+		CreateDefFunction resolveDefClass(string defType) {
+			return defClasses->at(defType);
 		}
 
-		void* buildDef(JsonValue& src, void* parent) {
+		void* buildDef(const JsonValue& input, void* parent = nullptr) {
+			JsonValue& src = const_cast<JsonValue&>(input);
 			if (!src.IsObject()) throw error("Definition source must be an object.");
 			if (src.HasMember("id")) {
 				string id = src["id"].GetString();
@@ -64,8 +82,8 @@ namespace esper {
 				);
 			}
 			string type = src["type"].GetString();
-			create_def_function createDef = resolveDefClass(type);
-			return createDef(this, &src, parent);
+			CreateDefFunction createDef = resolveDefClass(type);
+			return invoke(createDef, this, src, parent);
 		}
 
 		vector<void*>* buildDefs(
@@ -74,32 +92,41 @@ namespace esper {
 				rapidjson::MemoryPoolAllocator<rapidjson::CrtAllocator>
 			>& defs, void* parent) {
 			if (!defs.IsArray()) throw error("defs must be an array.");
-			int sortOrder = 0;
+			int index = 0;
 			vector<void*>* builtDefs = new vector<void*>(defs.Size());
 			for (auto it = defs.Begin(); it != defs.End(); it++) {
 				void* def = buildDef(*it, parent);
-				//def->sortOrder = sortOrder;
-				(*builtDefs)[sortOrder++] = def;
+				//def->index = index;
+				(*builtDefs)[index++] = def;
 			}
 			return builtDefs;
 		}
 
+		void* getFileHeaderDef() {
+			return recordDefs->at("TES4");
+		}
+
 		JsonDocument* defs;
-		DefMap recordDefs;
-		DefFunctionMap defClasses;
+		DefMap* recordDefs;
+		DefFunctionMap* defClasses;
 	};
 
-	using DefFunctionMap = DefinitionManager::DefFunctionMap;
-	using DefMap = DefinitionManager::DefMap;
-
-	DefFunctionMap DefinitionManager::allDefClasses = DefFunctionMap();
-
-	template<class T> void registerDef(string defType) {
-		DefinitionManager::allDefClasses[defType] = [](
+	template<class T> inline void registerDef(string defType) {
+		DefinitionManager::generalDefClasses[defType] = [](
 			DefinitionManager* manager,
-			JsonValue* def,
+			JsonValue& def,
 			void* parent
-		) {
+		) -> void* {
+			return (void*)(new T(manager, def, parent));
+		};
+	}
+
+	template<class T> inline void registerDef(Game& game, string defType) {
+		DefinitionManager::gameDefClasses[&game][defType] = [](
+			DefinitionManager* manager,
+			JsonValue& def,
+			void* parent
+		) -> void* {
 			return (void*)(new T(manager, def, parent));
 		};
 	}
